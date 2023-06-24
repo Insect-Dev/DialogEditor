@@ -5,18 +5,26 @@ const path = require('path')
 const createWindow = () => {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1000,
+        height: 800,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
+            preload: path.join(__dirname, 'preload.js'),
+            nodeIntegration: true,
+        },
+        title: "Dialog Editor",
+        titleBarStyle: 'hidden',
+        trafficLightPosition: { x: 10, y: 10 }
     })
 
     // and load the index.html of the app.
     mainWindow.loadFile('index.html')
+        // mainWindow.loadURL("https://youtube.com/@minetomek")
 
-    // Open the DevTools.
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.on('did-finish-load', () => {
+    //     mainWindow.webContents.insertCSS(
+    //         require('fs').readFileSync(path.join(__dirname, 'styles.css'), 'utf8')
+    //     );
+    // });
 }
 
 // This method will be called when Electron has finished
@@ -36,6 +44,7 @@ app.whenReady().then(() => {
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
+    // if (process.platform != "darwin") app.quit()
     app.quit()
 })
 

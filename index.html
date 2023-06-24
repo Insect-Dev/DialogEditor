@@ -4,16 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <link rel="stylesheet" href="./styles.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://ka-f.fontawesome.com https://kit.fontawesome.com; style-src 'self' https://ka-f.fontawesome.com https://kit.fontawesome.com 'unsafe-inline'">
+
+    <title>Dialog Editor - No file open</title>
+    <link rel="stylesheet" href="./dist/tailwind.css">
+    <script src="https://kit.fontawesome.com/e135b5fc83.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-slate-900 text-white font-sans">
-    <div class="navbar fixed top-0 left-0 right-0"></div>
-    We are using Node.js <span id=" node-version "></span>, Chromium <span id="chrome-version "></span>, and Electron <span id="electron-version "></span>.
+<body class="bg-zinc-900 text-white font-sans">
+    <div class="fixed top-0 left-0 right-0 h-[34px] bg-zinc-800 flex justify-between" id="navbar">
+        <div class="flex justify-center space-x-4 h-[34px] p-1">
+            <button class="bg-zinc-700 hover:bg-sky-600 text-white font-bold rounded-md flex items-center justify-center aspect-square">
+                <i class="fas fa-play"></i>
+            </button>
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js "></script>
+            <button class="bg-zinc-700 hover:bg-green-600 text-white font-bold rounded-md flex items-center justify-center aspect-square">
+                <i class="fas fa-download"></i>
+            </button>
+
+            <button class="bg-zinc-700 hover:bg-red-600 text-white font-bold rounded-md flex items-center justify-center aspect-square">
+                <i class="fas fa-share"></i>
+            </button>
+        </div>
+
+        <div class="bg-rose-700">
+            <i class="fa-solid fa-play"></i>
+        </div>
+        <div class="bg-lime-600">
+            <i class="fa-solid fa-play"></i>
+        </div>
+    </div>
+    <div class="sidebar fixed top-[34px] bottom-0 left-0 w-32 bg-zinc-700"></div>
+    <main class="pt-[34px] pl-32 m-2">
+        We are using Node.js <span id="node-version "></span>, Chromium <span id="chrome-version"></span>, and Electron <span id="electron-version"></span> and the current platform is <span id="platform"></span>.
+    </main>
 </body>
 
 </html>

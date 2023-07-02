@@ -79,9 +79,19 @@ const createWindow = async () => {
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
+    titleBarStyle: 'hidden',
+    trafficLightPosition: { x: 10, y: 10 }
   });
 
+  console.log(path.join(__dirname, 'icon.png'));
+
   mainWindow.loadURL(resolveHtmlPath('index.html'));
+
+  mainWindow.webContents.on('did-finish-load', () => {
+        mainWindow!.webContents.insertCSS(
+            require('fs').readFileSync(path.join(__dirname, '../../dist/output.css'), 'utf8')
+        );
+    });
 
   mainWindow.on('ready-to-show', () => {
     if (!mainWindow) {

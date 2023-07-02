@@ -54,17 +54,17 @@ export default class MenuBuilder {
 
   buildDarwinTemplate(): MenuItemConstructorOptions[] {
     const subMenuAbout: DarwinMenuItemConstructorOptions = {
-      label: 'Electron',
+      label: 'Dialog Editor',
       submenu: [
         {
-          label: 'About ElectronReact',
+          label: 'About Dialog Editor',
           selector: 'orderFrontStandardAboutPanel:',
         },
         { type: 'separator' },
         { label: 'Services', submenu: [] },
         { type: 'separator' },
         {
-          label: 'Hide ElectronReact',
+          label: 'Hide Dialog Editor',
           accelerator: 'Command+H',
           selector: 'hide:',
         },
@@ -155,6 +155,12 @@ export default class MenuBuilder {
       label: 'Help',
       submenu: [
         {
+          label: 'Get More Help!',
+          click() {
+            shell.openExternal('mailto:lukom.tomek@gmail.com');
+          },
+        },
+        {
           label: 'Learn More',
           click() {
             shell.openExternal('https://electronjs.org');
@@ -185,7 +191,7 @@ export default class MenuBuilder {
 
     const subMenuView =
       process.env.NODE_ENV === 'development' ||
-      process.env.DEBUG_PROD === 'true'
+        process.env.DEBUG_PROD === 'true'
         ? subMenuViewDev
         : subMenuViewProd;
 
@@ -214,43 +220,43 @@ export default class MenuBuilder {
         label: '&View',
         submenu:
           process.env.NODE_ENV === 'development' ||
-          process.env.DEBUG_PROD === 'true'
+            process.env.DEBUG_PROD === 'true'
             ? [
-                {
-                  label: '&Reload',
-                  accelerator: 'Ctrl+R',
-                  click: () => {
-                    this.mainWindow.webContents.reload();
-                  },
+              {
+                label: '&Reload',
+                accelerator: 'Ctrl+R',
+                click: () => {
+                  this.mainWindow.webContents.reload();
                 },
-                {
-                  label: 'Toggle &Full Screen',
-                  accelerator: 'F11',
-                  click: () => {
-                    this.mainWindow.setFullScreen(
-                      !this.mainWindow.isFullScreen()
-                    );
-                  },
+              },
+              {
+                label: 'Toggle &Full Screen',
+                accelerator: 'F11',
+                click: () => {
+                  this.mainWindow.setFullScreen(
+                    !this.mainWindow.isFullScreen()
+                  );
                 },
-                {
-                  label: 'Toggle &Developer Tools',
-                  accelerator: 'Alt+Ctrl+I',
-                  click: () => {
-                    this.mainWindow.webContents.toggleDevTools();
-                  },
+              },
+              {
+                label: 'Toggle &Developer Tools',
+                accelerator: 'Alt+Ctrl+I',
+                click: () => {
+                  this.mainWindow.webContents.toggleDevTools();
                 },
-              ]
+              },
+            ]
             : [
-                {
-                  label: 'Toggle &Full Screen',
-                  accelerator: 'F11',
-                  click: () => {
-                    this.mainWindow.setFullScreen(
-                      !this.mainWindow.isFullScreen()
-                    );
-                  },
+              {
+                label: 'Toggle &Full Screen',
+                accelerator: 'F11',
+                click: () => {
+                  this.mainWindow.setFullScreen(
+                    !this.mainWindow.isFullScreen()
+                  );
                 },
-              ],
+              },
+            ],
       },
       {
         label: 'Help',

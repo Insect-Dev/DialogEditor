@@ -2,32 +2,18 @@
     "description": "App for editing dialog for Antventure",
     "keywords": [
         "electron",
-        "boilerplate",
         "react",
         "typescript",
         "ts",
         "sass",
-        "webpack",
-        "hot",
-        "reload"
+        "webpack"
     ],
-    "homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
-    "bugs": {
-        "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
-    },
-    "license": "MIT",
     "author": {
         "name": "mineTomek",
         "email": "lukom.tomek@gmail.com",
         "url": "https://youtube.com/@minetomek"
     },
-    "contributors": [
-
-    ],
+    "contributors": [],
     "main": "./src/main/main.ts",
     "scripts": {
         "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
